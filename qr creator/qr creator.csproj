@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="qrcreator.ico" />
+    <Content Include="version.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.IO;
 using AutoUpdaterDotNET;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace qr_creator
 {
@@ -64,87 +65,48 @@ namespace qr_creator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool isUri = Uri.IsWellFormedUriString(textBox1.Text, UriKind.RelativeOrAbsolute);
             if (String.IsNullOrEmpty(textBox1.Text))
             {
                 MessageBox.Show("Please enter a valid value below first", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                label1.Text = "Successfully generated QR code!";
-                if (!isUri)
+                label1.Text = "            Successfully generated QR code!";
+                if (!checkBox1.Checked)
                 {
-                    if (!checkBox1.Checked)
-                    {
-                        FrontQRColor = "#4287f5";
-                        BackQRColor = "#000000";
-                    }
-                    else
-                    {
-                        var random = new Random();
-                        FrontQRColor = $"#{random.Next(0x1000000):X6}";
-                        BackQRColor = $"#{random.Next(0x1000000):X6}";
-                    }
-                    QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                    QRCodeData qrCodeData = qrGenerator.CreateQrCode(textBox1.Text, QRCodeGenerator.ECCLevel.Q);
-                    QRCode qrCode = new QRCode(qrCodeData);
-                    Bitmap qrCodeImage = qrCode.GetGraphic(20, FrontQRColor, BackQRColor);
-                    pictureBox1.Image = qrCodeImage;
-                    toolTip1.SetToolTip(pictureBox1, "Click to save: " + textBox1.Text);
-                    label1.ForeColor = Color.LightGreen;
-                    label2.Hide();
-                    if (!checkBox2.Checked)
-                    {
-                        textBox1.Text = "";
-                    }
-
-                    var t = new Timer();
-                    t.Interval = 2000;
-                    t.Tick += (s, g) =>
-                    {
-                        label1.Hide();
-                        t.Stop();
-                    };
-                    t.Start();
+                    FrontQRColor = "#4287f5";
+                    BackQRColor = "#000000";
                 }
                 else
                 {
-                    if (!checkBox1.Checked)
-                    {
-                        FrontQRColor = "#4287f5";
-                        BackQRColor = "#000000";
-                    }
-                    else
-                    {
-                        var random = new Random();
-                        FrontQRColor = $"#{random.Next(0x1000000):X6}";
-                        BackQRColor = $"#{random.Next(0x1000000):X6}";
-                    }
-                    PayloadGenerator.Url generator = new PayloadGenerator.Url(textBox1.Text);
-                    string payload = generator.ToString();
-
-                    QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                    QRCodeData qrCodeData = qrGenerator.CreateQrCode(payload, QRCodeGenerator.ECCLevel.Q);
-                    QRCode qrCode = new QRCode(qrCodeData);
-                    var qrCodeAsBitmap = qrCode.GetGraphic(20, FrontQRColor, BackQRColor);
-                    pictureBox1.Image = qrCodeAsBitmap;
-                    toolTip1.SetToolTip(pictureBox1, "Click to save: " + textBox1.Text);
-                    label1.ForeColor = Color.LightGreen;
-                    label2.Hide();
-                    if (!checkBox2.Checked)
-                    {
-                        textBox1.Text = "";
-                    }
-
-                    var t = new Timer();
-                    t.Interval = 2000;
-                    t.Tick += (s, g) =>
-                    {
-                        label1.Text = "";
-                        t.Stop();
-                    };
-                    t.Start();
+                    var random = new Random();
+                    FrontQRColor = $"#{random.Next(0x1000000):X6}";
+                    BackQRColor = $"#{random.Next(0x1000000):X6}";
                 }
+                PayloadGenerator.Url generator = new PayloadGenerator.Url(textBox1.Text);
+                string payload = generator.ToString();
+
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(payload, QRCodeGenerator.ECCLevel.Q);
+                QRCode qrCode = new QRCode(qrCodeData);
+                var qrCodeAsBitmap = qrCode.GetGraphic(20, FrontQRColor, BackQRColor);
+                pictureBox1.Image = qrCodeAsBitmap;
+                toolTip1.SetToolTip(pictureBox1, "Click to save: " + textBox1.Text);
+                label1.ForeColor = Color.LightGreen;
+                label2.Hide();
+                if (!checkBox2.Checked)
+                {
+                    textBox1.Text = "";
+                }
+
+                var t = new Timer();
+                t.Interval = 2000;
+                t.Tick += (s, g) =>
+                {
+                    label1.Text = "";
+                    t.Stop();
+                };
+                t.Start();
             }
         }
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -162,10 +124,10 @@ namespace qr_creator
                 string file = RandomFileName();
                 fullFile = saveFolder + @"\" + file + ".png";
                 pictureBox1.Image.Save(fullFile, ImageFormat.Png);
-                label1.Text = "   Successfully saved QR code!";
+                label1.Text = "Successfully saved QR code as "+ file + ".png!";
 
                 var t = new Timer();
-                t.Interval = 2000;
+                t.Interval = 3000;
                 t.Tick += (s, g) =>
                 {
                     label1.Text = "";

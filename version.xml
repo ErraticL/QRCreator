@@ -3,5 +3,5 @@
 	<version>1.1.0.0</version>
 	<url>https://github.com/TTVErraticAlcoholic/QRCreator/releases/latest/download/Release.zip</url>
 	<changelog></changelog>
-	<mandatory>true</mandatory>
+	<mandatory>false</mandatory>
 </item>

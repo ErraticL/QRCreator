@@ -232,5 +232,27 @@ namespace qr_creator
                 MessageBox.Show("Save folder not found. The fuck have you done?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked)
+            {
+                BackColor = Color.Black;
+                label2.ForeColor = Color.White;
+                checkBox1.ForeColor = Color.White;
+                checkBox2.ForeColor = Color.White;
+                checkBox3.ForeColor = Color.White;
+                pictureBox2.Image = Properties.Resources.cancel_white;
+            }
+            else
+            {
+                BackColor = Color.White;
+                label2.ForeColor = Color.Black;
+                checkBox1.ForeColor = Color.Black;
+                checkBox2.ForeColor = Color.Black;
+                checkBox3.ForeColor = Color.Black;
+                pictureBox2.Image = Properties.Resources.cancel;
+            }
+        }
     }
 }

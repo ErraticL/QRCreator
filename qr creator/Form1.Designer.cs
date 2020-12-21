@@ -39,6 +39,7 @@ namespace qr_creator
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label2 = new System.Windows.Forms.Label();
@@ -128,6 +129,21 @@ namespace qr_creator
         "ed");
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox3.Location = new System.Drawing.Point(263, 232);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(78, 17);
+            this.checkBox3.TabIndex = 9;
+            this.checkBox3.Text = "Dark mode";
+            this.toolTip1.SetToolTip(this.checkBox3, "Turns dark mode on/off");
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -153,8 +169,9 @@ namespace qr_creator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlText;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(387, 337);
+            this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.checkBox1);
@@ -193,6 +210,7 @@ namespace qr_creator
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }
 

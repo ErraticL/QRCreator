@@ -28,7 +28,7 @@ namespace qr_creator
         {
             InitializeComponent();
 
-            AutoUpdater.Start("https://raw.githubusercontent.com/TTVErraticAlcoholic/QR_Creator/main/version.xml");
+            AutoUpdater.Start("https://github.com/TTVErraticAlcoholic/QRCreator/blob/master/qr%20creator/version.xml");
 
             if (!Directory.Exists(saveFolder))
             {

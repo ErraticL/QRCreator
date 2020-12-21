@@ -1,31 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing.Imaging;
-using System.Windows.Forms;
+﻿using AutoUpdaterDotNET;
 using QRCoder;
+using System;
+using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
-using AutoUpdaterDotNET;
-using System.Net;
-using System.Text.RegularExpressions;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Windows.Forms;
 
 namespace qr_creator
 {
     public partial class Form1 : Form
     {
-
         public static string saveFolder = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "GeneratedQRCodes");
         public static string fullFile;
         public static string FrontQRColor;
         public static string BackQRColor;
-        private PrintDocument docToPrint = new PrintDocument();
 
         public Form1()
         {
@@ -43,6 +36,7 @@ namespace qr_creator
 
         private bool mouseDown;
         private Point lastLocation;
+
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
@@ -111,6 +105,7 @@ namespace qr_creator
                 t.Start();
             }
         }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null)
@@ -126,7 +121,7 @@ namespace qr_creator
                 string file = RandomFileName();
                 fullFile = saveFolder + @"\" + file + ".png";
                 pictureBox1.Image.Save(fullFile, ImageFormat.Png);
-                label1.Text = "Successfully saved QR code as "+ file + ".png!";
+                label1.Text = "Successfully saved QR code as " + file + ".png!";
 
                 var t = new Timer();
                 t.Interval = 3000;
@@ -136,7 +131,7 @@ namespace qr_creator
                     t.Stop();
                 };
                 t.Start();
-            }           
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -149,19 +144,14 @@ namespace qr_creator
             var random = new Random();
             return random.Next(min, max);
         }
+
         public string RandomString(int size, bool lowerCase = false)
         {
             var random = new Random();
             var builder = new StringBuilder(size);
 
-            // Unicode/ASCII Letters are divided into two blocks
-            // (Letters 65–90 / 97–122):
-            // The first group containing the uppercase letters and
-            // the second group containing the lowercase.  
-
-            // char is a single Unicode character  
             char offset = lowerCase ? 'a' : 'A';
-            const int lettersOffset = 26; // A...Z or a..z: length=26  
+            const int lettersOffset = 26;
 
             for (var i = 0; i < size; i++)
             {
@@ -176,13 +166,13 @@ namespace qr_creator
         {
             var passwordBuilder = new StringBuilder();
 
-            // 4-Letters lower case   
+            // 4-Letters lower case
             passwordBuilder.Append(RandomString(4, true));
 
-            // 4-Digits between 1000 and 9999  
+            // 4-Digits between 1000 and 9999
             passwordBuilder.Append(RandomNumber(1000, 9999));
 
-            // 2-Letters upper case  
+            // 2-Letters upper case
             passwordBuilder.Append(RandomString(2));
             return passwordBuilder.ToString();
         }
@@ -306,11 +296,9 @@ namespace qr_creator
         private void Doc_PrintPage(object sender, PrintPageEventArgs e)
         {
             Bitmap BM = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            pictureBox1.DrawToBitmap(BM, new Rectangle(0,0, pictureBox1.Width,pictureBox1.Height));
+            pictureBox1.DrawToBitmap(BM, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
             e.Graphics.DrawImage(BM, 0, 0);
             BM.Dispose();
         }
     }
 }
-
-

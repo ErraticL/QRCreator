@@ -14,6 +14,7 @@ using System.IO;
 using AutoUpdaterDotNET;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Drawing.Printing;
 
 namespace qr_creator
 {
@@ -24,6 +25,7 @@ namespace qr_creator
         public static string fullFile;
         public static string FrontQRColor;
         public static string BackQRColor;
+        private PrintDocument docToPrint = new PrintDocument();
 
         public Form1()
         {
@@ -281,5 +283,34 @@ namespace qr_creator
                 }
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Try generating a QR code first", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                PrintDialog PD = new PrintDialog();
+                PrintDocument doc = new PrintDocument();
+                doc.PrintPage += Doc_PrintPage;
+                PD.Document = doc;
+                if (PD.ShowDialog() == DialogResult.OK)
+                {
+                    doc.Print();
+                }
+            }
+        }
+
+        private void Doc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Bitmap BM = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.DrawToBitmap(BM, new Rectangle(0,0, pictureBox1.Width,pictureBox1.Height));
+            e.Graphics.DrawImage(BM, 0, 0);
+            BM.Dispose();
+        }
     }
 }
+
+

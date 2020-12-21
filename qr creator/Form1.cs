@@ -28,7 +28,6 @@ namespace qr_creator
         {
             InitializeComponent();
 
-            AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
             AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
 
             AutoUpdater.Start("https://raw.githubusercontent.com/TTVErraticAlcoholic/QRCreator/master/version.xml");
@@ -319,12 +318,6 @@ namespace qr_creator
                         MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void AutoUpdater_ApplicationExitEvent()
-        {
-            Text = @"Closing application...";
-            Application.Exit();
         }
     }
 }

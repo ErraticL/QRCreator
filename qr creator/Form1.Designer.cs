@@ -40,10 +40,10 @@ namespace qr_creator
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -146,6 +146,18 @@ namespace qr_creator
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
+            // button3
+            // 
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Location = new System.Drawing.Point(264, 277);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(111, 20);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Print QR code";
+            this.toolTip1.SetToolTip(this.button3, "Requires a printer. Duh");
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -167,18 +179,6 @@ namespace qr_creator
             this.label2.TabIndex = 7;
             this.label2.Text = "Your QR code will appear here!";
             // 
-            // button3
-            // 
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(264, 277);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(111, 20);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Print QR code";
-            this.toolTip1.SetToolTip(this.button3, "Requires a printer. Duh");
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
@@ -187,6 +187,7 @@ namespace qr_creator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(387, 337);
             this.Controls.Add(this.button3);

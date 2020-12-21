@@ -2,6 +2,7 @@
 First proper C# application. Uses QRCoder to generate QR codes. More features to follow.
 
 Created using https://github.com/codebude/QRCoder
+
 Auto update functionality made using https://github.com/ravibpatel/AutoUpdater.NET
 
 Currently supports URLs and normal strings. 

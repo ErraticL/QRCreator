@@ -12,7 +12,7 @@ using QRCoder;
 using System.Diagnostics;
 using System.IO;
 using AutoUpdaterDotNET;
-
+using System.Net;
 
 namespace qr_creator
 {
@@ -28,7 +28,10 @@ namespace qr_creator
         {
             InitializeComponent();
 
-            AutoUpdater.Start("https://github.com/TTVErraticAlcoholic/QRCreator/blob/master/version.xml");
+            AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
+            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
+
+            AutoUpdater.Start("https://raw.githubusercontent.com/TTVErraticAlcoholic/QRCreator/master/version.xml");
 
             if (!Directory.Exists(saveFolder))
             {
@@ -253,6 +256,75 @@ namespace qr_creator
                 checkBox3.ForeColor = Color.Black;
                 pictureBox2.Image = Properties.Resources.cancel;
             }
+        }
+
+        private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
+        {
+            if (args.Error == null)
+            {
+                if (args.IsUpdateAvailable)
+                {
+                    DialogResult dialogResult;
+                    if (args.Mandatory.Value)
+                    {
+                        dialogResult =
+                            MessageBox.Show(
+                                $@"{args.CurrentVersion} is available. Your current version is {args.InstalledVersion}. This update is mandatory. Press Ok to begin updating the application.", @"Update Available",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        dialogResult =
+                            MessageBox.Show(
+                                $@"{args.CurrentVersion} is available. Your current version is {
+                                        args.InstalledVersion
+                                    }. Do you want to update the application now?", @"Update Available",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Information);
+                    }
+
+                    // Uncomment the following line if you want to show standard update dialog instead.
+                    // AutoUpdater.ShowUpdateForm(args);
+
+                    if (dialogResult.Equals(DialogResult.Yes) || dialogResult.Equals(DialogResult.OK))
+                    {
+                        try
+                        {
+                            if (AutoUpdater.DownloadUpdate(args))
+                            {
+                                Application.Exit();
+                            }
+                        }
+                        catch (Exception exception)
+                        {
+                            MessageBox.Show(exception.Message, exception.GetType().ToString(), MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (args.Error is WebException)
+                {
+                    MessageBox.Show(
+                        @" Please check your internet connection and try again later.",
+                        @"Update Check Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show(args.Error.Message,
+                        args.Error.GetType().ToString(), MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void AutoUpdater_ApplicationExitEvent()
+        {
+            Text = @"Closing application...";
+            Application.Exit();
         }
     }
 }

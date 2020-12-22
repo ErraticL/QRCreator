@@ -178,7 +178,7 @@ namespace qr_creator
                 else
                 {
                     MessageBox.Show(
-                    $@"You're running the latest verion.", $@"QRCreator {args.InstalledVersion}",
+                    $@"You're running the latest version.", $@"QRCreator {args.InstalledVersion}",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 }

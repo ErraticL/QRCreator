@@ -118,6 +118,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="qrcreator.ico" />
+    <None Include="Resources\Generate QR code.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\Open save folder.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

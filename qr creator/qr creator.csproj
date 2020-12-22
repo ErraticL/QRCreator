@@ -112,17 +112,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cancel.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\cancel_white.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="qrcreator.ico" />
     <None Include="Resources\Print QR code.png" />
-    <None Include="Resources\update.png" />
     <None Include="Resources\update_white.png" />
-    <None Include="Resources\github.png" />
     <None Include="Resources\github_white.png" />
     <None Include="Resources\Generate QR code.png" />
     <None Include="Resources\Open save folder.png" />

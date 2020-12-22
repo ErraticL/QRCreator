@@ -63,16 +63,6 @@ namespace qr_creator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cancel {
-            get {
-                object obj = ResourceManager.GetObject("cancel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap cancel_white {
             get {
                 object obj = ResourceManager.GetObject("cancel_white", resourceCulture);
@@ -86,16 +76,6 @@ namespace qr_creator.Properties {
         internal static System.Drawing.Bitmap Generate_QR_code {
             get {
                 object obj = ResourceManager.GetObject("Generate_QR_code", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap github {
-            get {
-                object obj = ResourceManager.GetObject("github", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,16 +106,6 @@ namespace qr_creator.Properties {
         internal static System.Drawing.Bitmap Print_QR_code {
             get {
                 object obj = ResourceManager.GetObject("Print_QR_code", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap update {
-            get {
-                object obj = ResourceManager.GetObject("update", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

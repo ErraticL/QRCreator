@@ -19,14 +19,14 @@ namespace qr_creator
         public static string fullFile;
         public static string FrontQRColor;
         public static string BackQRColor;
+        public static Color darkMode;
 
         public Form1()
         {
             InitializeComponent();
+            new RoundedForm(this);
 
             AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
-
-            AutoUpdater.Start("https://raw.githubusercontent.com/TTVErraticAlcoholic/QRCreator/master/version.xml");
 
             if (!Directory.Exists(saveFolder))
             {
@@ -130,28 +130,6 @@ namespace qr_creator
             return passwordBuilder.ToString();
         }
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox3.Checked)
-            {
-                BackColor = Color.Black;
-                label2.ForeColor = Color.White;
-                checkBox1.ForeColor = Color.White;
-                checkBox2.ForeColor = Color.White;
-                checkBox3.ForeColor = Color.White;
-                pictureBox2.Image = Properties.Resources.cancel_white;
-            }
-            else
-            {
-                BackColor = Color.White;
-                label2.ForeColor = Color.Black;
-                checkBox1.ForeColor = Color.Black;
-                checkBox2.ForeColor = Color.Black;
-                checkBox3.ForeColor = Color.Black;
-                pictureBox2.Image = Properties.Resources.cancel;
-            }
-        }
-
         private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
         {
             if (args.Error == null)
@@ -197,6 +175,13 @@ namespace qr_creator
                         }
                     }
                 }
+                else
+                {
+                    MessageBox.Show(
+                    $@"You're running the latest verion.", $@"QRCreator {args.InstalledVersion}",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                }
             }
             else
             {
@@ -239,7 +224,7 @@ namespace qr_creator
                 if (!checkBox1.Checked)
                 {
                     FrontQRColor = "#4287f5";
-                    BackQRColor = "#000000";
+                    BackQRColor = "#0d1117";
                 }
                 else
                 {
@@ -299,6 +284,16 @@ namespace qr_creator
             pictureBox1.DrawToBitmap(BM, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
             e.Graphics.DrawImage(BM, 0, 0);
             BM.Dispose();
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            AutoUpdater.Start("https://raw.githubusercontent.com/TTVErraticAlcoholic/QRCreator/master/version.xml");
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/TTVErraticAlcoholic/QRCreator");
         }
     }
 }

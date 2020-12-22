@@ -75,6 +75,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RoundedForm.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,9 +119,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="qrcreator.ico" />
+    <None Include="Resources\Print QR code.png" />
+    <None Include="Resources\update.png" />
+    <None Include="Resources\update_white.png" />
+    <None Include="Resources\github.png" />
+    <None Include="Resources\github_white.png" />
     <None Include="Resources\Generate QR code.png" />
-    <None Include="Resources\printer.png" />
-    <None Include="Resources\folder.png" />
     <None Include="Resources\Open save folder.png" />
   </ItemGroup>
   <ItemGroup>

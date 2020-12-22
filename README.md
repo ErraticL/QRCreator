@@ -9,7 +9,7 @@ Currently supports URLs and normal strings.
 
 You can save the QR codes to a PNG image by clicking on the QR code or print it by pressing the "Print QR code" button
 
-![](https://erratic.get-some.help/4gKGXgR.png)
+![](https://erratic.get-some.help/4EwUvKv.png)
 
 ![](https://erratic.get-some.help/7Sfwd2U.png)
 

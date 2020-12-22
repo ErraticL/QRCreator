@@ -7,7 +7,7 @@ Auto update functionality made using https://github.com/ravibpatel/AutoUpdater.N
 
 Currently supports URLs and normal strings. 
 
-You can save the QR codes to a PNG image by clicking on the QR code
+You can save the QR codes to a PNG image by clicking on the QR code or print it by pressing the "Print QR code" button
 
 ![](https://erratic.get-some.help/4gKGXgR.png)
 

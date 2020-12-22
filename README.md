@@ -11,5 +11,5 @@ You can save the QR codes to a PNG image by clicking on the QR code or print it 
 
 ![](https://erratic.get-some.help/4EwUvKv.png)
 
-![](https://erratic.get-some.help/7Sfwd2U.png)
+![](https://erratic.get-some.help/9xW3XwA.png)
 

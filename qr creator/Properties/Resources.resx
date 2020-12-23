@@ -127,13 +127,4 @@
   <data name="github_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\github_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Generate_QR_code" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Generate QR code.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Open_save_folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Open save folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Print_QR_code" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Print QR code.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

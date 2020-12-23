@@ -75,6 +75,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RoundedForm.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

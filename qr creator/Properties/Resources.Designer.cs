@@ -73,39 +73,9 @@ namespace qr_creator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Generate_QR_code {
-            get {
-                object obj = ResourceManager.GetObject("Generate_QR_code", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap github_white {
             get {
                 object obj = ResourceManager.GetObject("github_white", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Open_save_folder {
-            get {
-                object obj = ResourceManager.GetObject("Open_save_folder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Print_QR_code {
-            get {
-                object obj = ResourceManager.GetObject("Print_QR_code", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

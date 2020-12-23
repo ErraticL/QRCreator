@@ -200,7 +200,25 @@ namespace qr_creator
             }
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void Doc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Bitmap BM = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.DrawToBitmap(BM, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
+            e.Graphics.DrawImage(BM, 0, 0);
+            BM.Dispose();
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            AutoUpdater.Start("https://raw.githubusercontent.com/TTVErraticAlcoholic/QRCreator/master/version.xml");
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/TTVErraticAlcoholic/QRCreator");
+        }
+
+        private void button_WOC1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -212,15 +230,15 @@ namespace qr_creator
             }
         }
 
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void button_WOC3_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBox1.Text))
+            if (string.IsNullOrEmpty(textBox1.Text) || textBox1.Text == "Enter your text here...")
             {
                 MessageBox.Show("Please enter a valid value below first", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                label1.Text = "            Successfully generated QR code!";
+                label1.Text = "                  Successfully generated QR code!";
                 if (!checkBox1.Checked)
                 {
                     FrontQRColor = "#4287f5";
@@ -259,7 +277,7 @@ namespace qr_creator
             }
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void button_WOC2_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null)
             {
@@ -278,22 +296,24 @@ namespace qr_creator
             }
         }
 
-        private void Doc_PrintPage(object sender, PrintPageEventArgs e)
+        private void textBox_Enter(object sender, EventArgs e)
         {
-            Bitmap BM = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            pictureBox1.DrawToBitmap(BM, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
-            e.Graphics.DrawImage(BM, 0, 0);
-            BM.Dispose();
+            if (textBox1.Text == "Enter your text here...")
+            {
+                textBox1.Text = "";
+
+                textBox1.ForeColor = Color.White;
+            }
         }
 
-        private void pictureBox7_Click(object sender, EventArgs e)
+        private void textBox_Leave(object sender, EventArgs e)
         {
-            AutoUpdater.Start("https://raw.githubusercontent.com/TTVErraticAlcoholic/QRCreator/master/version.xml");
-        }
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Enter your text here...";
 
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://github.com/TTVErraticAlcoholic/QRCreator");
+                textBox1.ForeColor = Color.Gray;
+            }
         }
     }
 }

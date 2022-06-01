@@ -315,5 +315,33 @@ namespace qr_creator
                 textBox1.ForeColor = Color.Gray;
             }
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Try generating a QR code first", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (!Directory.Exists(saveFolder))
+                {
+                    Directory.CreateDirectory(saveFolder);
+                }
+                string file = RandomFileName();
+                fullFile = saveFolder + @"\" + file + ".png";
+                pictureBox1.Image.Save(fullFile, ImageFormat.Png);
+                label1.Text = "Successfully saved QR code as " + file + ".png!";
+
+                var t = new Timer();
+                t.Interval = 3000;
+                t.Tick += (s, g) =>
+                {
+                    label1.Text = "";
+                    t.Stop();
+                };
+                t.Start();
+            }
+        }
     }
 }

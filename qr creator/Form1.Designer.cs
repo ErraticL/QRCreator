@@ -162,12 +162,14 @@ namespace qr_creator
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Corbel", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(62, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 14);
             this.label2.TabIndex = 7;
             this.label2.Text = "Your QR code will appear here!";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // printDialog1
             // 
